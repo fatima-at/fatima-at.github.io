@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MPC and imitation learning for the R1 | Fatima Atwi</title>
+<meta name="description" content="Cross-entropy MPC in MuJoCo MJX and a DeepMimic-style PPO policy for the Unitree R1 humanoid.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MPC and imitation learning for the R1 | Fatima Atwi">
+<meta property="og:description" content="Cross-entropy MPC in MuJoCo MJX and a DeepMimic-style PPO policy for the Unitree R1 humanoid.">
+<meta property="og:url" content="https://fatima-at.github.io/projects/r1-mpc-imitation.html">
+<meta property="og:image" content="https://fatima-at.github.io/assets/img/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Fatima Atwi</a>
+    <nav class="nav" aria-label="Main"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html">Experience</a><a href="../publications.html">Publications</a><a href="../education.html">Education</a></nav>
+    <a class="btn btn-primary btn-small" href="../assets/cv/Fatima_Atwi_CV.pdf" target="_blank" rel="noopener">CV</a>
+  </div>
+</header>
+<main class="wrap">
+
+<p class="crumbs"><a href="../projects.html">Projects</a> / MPC and imitation learning</p>
+<section class="detail-head">
+  <h1>Model-predictive control and imitation learning for the Unitree R1</h1>
+  <p class="summary">A locomotion pipeline for the Unitree R1 humanoid in MuJoCo MJX: a sampling-based model-predictive controller to generate gaits, quantitative metrics to select them, and a reinforcement-learning policy that imitates the selected gait in real time.</p>
+  <dl class="meta">
+    <div><dt>Where</dt><dd>LAAS-CNRS, Gepetto team</dd></div>
+    <div><dt>When</dt><dd>Jul – Aug 2026</dd></div>
+    <div><dt>Role</dt><dd>Research intern</dd></div>
+    <div><dt>Tools</dt><dd>MuJoCo MJX, JAX, PPO</dd></div>
+  </dl>
+</section>
+
+<figure class="">
+  <div class="media"><img src="../assets/img/r1-gait-grid.png" alt="Gait keyframes of the Unitree R1"></div>
+  <figcaption>Gait keyframes of the Unitree R1 in MuJoCo, side view.</figcaption>
+</figure>
+
+<aside class="lab" aria-label="About the lab">
+  <h2>About the lab</h2>
+  <div>
+    <p><strong>LAAS-CNRS</strong> (Toulouse) is a laboratory of CNRS, France's national scientific research centre, and one of its largest in systems engineering, from robotics and control to micro- and nano-systems.</p>
+    <p>Its <strong>Gepetto</strong> team works on motion generation and control for legged and humanoid robots, and develops widely used open-source tools such as Pinocchio and Crocoddyl.</p>
+  </div>
+</aside>
+
+<div class="prose">
+  <h2>Method</h2>
+  <ul>
+    <li>Implemented a sampling-based cross-entropy method (CEM) model-predictive controller in MuJoCo MJX, with parallel rollouts on the GPU.</li>
+    <li>Derived the target gait period analytically from the compound-pendulum parameters of the robot's legs.</li>
+    <li>Defined eight quantitative gait metrics and used them to identify and eliminate a hopping gait.</li>
+    <li>Generated a reference dataset from the selected gait and trained a DeepMimic-style imitation policy with Proximal Policy Optimization.</li>
+  </ul>
+  <h2>Results</h2>
+</div>
+<ul class="results">
+  <li><strong>0.63 m/s</strong><span>maximum commanded velocity tracked in real time</span></li>
+  <li><strong>544 steps</strong><span>of walking (about 11 s) with the learned policy</span></li>
+  <li><strong>110 steps</strong><span>(2.2 s) for open-loop replay of the same reference</span></li>
+</ul>
+<nav class="next" aria-label="More projects"><a href="../projects/snn-humanoid-control.html">Previous: spiking neural network control of the H1-2</a><a href="../projects.html">All projects</a></nav>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>&copy; <span id="year">2026</span> Fatima Atwi</span>
+    <nav aria-label="Contact">
+      <a data-link="email" data-link-item href="#"></a>
+      <a data-link="github" data-link-item href="#">GitHub</a>
+      <a data-link="linkedin" data-link-item href="#">LinkedIn</a>
+      <a href="../assets/cv/Fatima_Atwi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

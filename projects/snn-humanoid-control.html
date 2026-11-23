@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spiking neural network control of the H1-2 | Fatima Atwi</title>
+<meta name="description" content="A simulated 3D cortical culture trained with e-prop and R-STDP to control the Unitree H1-2 humanoid, deployed on hardware.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Spiking neural network control of the H1-2 | Fatima Atwi">
+<meta property="og:description" content="A simulated 3D cortical culture trained with e-prop and R-STDP to control the Unitree H1-2 humanoid, deployed on hardware.">
+<meta property="og:url" content="https://fatima-at.github.io/projects/snn-humanoid-control.html">
+<meta property="og:image" content="https://fatima-at.github.io/assets/img/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Fatima Atwi</a>
+    <nav class="nav" aria-label="Main"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../experience.html">Experience</a><a href="../publications.html">Publications</a><a href="../education.html">Education</a></nav>
+    <a class="btn btn-primary btn-small" href="../assets/cv/Fatima_Atwi_CV.pdf" target="_blank" rel="noopener">CV</a>
+  </div>
+</header>
+<main class="wrap">
+
+<p class="crumbs"><a href="../projects.html">Projects</a> / Spiking neural network control</p>
+<section class="detail-head">
+  <h1>Spiking neural network control of the Unitree H1-2</h1>
+  <p class="summary">Can a network of biological neurons control a humanoid robot? As a first step, I built a simulator of a 3D cortical culture grown on microelectrode arrays, trained it as a closed-loop locomotion controller, and deployed it on the physical Unitree H1-2.</p>
+  <dl class="meta">
+    <div><dt>Where</dt><dd>LAAS-CNRS, Toulouse</dd></div>
+    <div><dt>When</dt><dd>May – Jul 2026</dd></div>
+    <div><dt>Role</dt><dd>Research intern, first author</dd></div>
+    <div><dt>Supervisor</dt><dd>Olivier Stasse</dd></div>
+  </dl>
+</section>
+
+<div class="figrow">
+  <figure>
+  <div class="media"><video autoplay muted loop playsinline poster="../assets/img/h1-2-sim-poster.jpg"><source src="../assets/media/h1-2-sim.mp4" type="video/mp4"></video></div>
+  <figcaption>Simulation (MuJoCo): the trained network walking the H1-2.</figcaption>
+</figure>
+  <figure>
+  <div class="media"><video autoplay muted loop playsinline poster="../assets/img/h1-2-hardware-steps-poster.jpg"><source src="../assets/media/h1-2-hardware-steps.mp4" type="video/mp4"></video></div>
+  <figcaption>Hardware: first steps on the physical H1-2, driven directly by the network.</figcaption>
+</figure>
+</div>
+
+<aside class="lab" aria-label="About the lab">
+  <h2>About the lab</h2>
+  <div>
+    <p><strong>LAAS-CNRS</strong> (Toulouse) is a laboratory of CNRS, France's national scientific research centre, and one of its largest in systems engineering, from robotics and control to micro- and nano-systems.</p>
+    <p>Its <strong>Gepetto</strong> team works on motion generation and control for legged and humanoid robots, and develops widely used open-source tools such as Pinocchio and Crocoddyl.</p>
+  </div>
+</aside>
+
+<div class="prose">
+  <h2>Context</h2>
+  <p>The work sat between two LAAS-CNRS teams: Gepetto, which gave me hardware access to the Unitree H1-2, and MEMS, which grows cortical neurons on 3D silicon microbeads and microelectrode arrays. The simulator reproduces that biological setup, so that the same pipeline can later run on living cultures.</p>
+
+  <h2>My role</h2>
+  <ul>
+    <li>Built the culture simulator and its compact PyTorch replica.</li>
+    <li>Implemented, adapted and compared the learning rules.</li>
+    <li>Trained the closed-loop controllers and ran the hardware deployment.</li>
+    <li>Wrote the paper as first author.</li>
+  </ul>
+
+  <h2>Method</h2>
+  <h3>Culture simulator</h3>
+  <ul>
+    <li>Leaky integrate-and-fire populations in a layered 3D volume, with the array's electrode geometry and its 60 available contacts, built in Brian2.</li>
+    <li>Rebuilt as a compact PyTorch replica tuned to cortical firing statistics and validated against recorded activity.</li>
+  </ul>
+  <h3>Closed-loop control</h3>
+  <ul>
+    <li>A 45-dimensional observation drives a 512-neuron spiking network. A readout produces 12 joint targets for a 1 kHz PD controller on the H1-2.</li>
+    <li>An expert reinforcement-learning policy provides labels only. The network is trained by behavioral cloning, then DAgger.</li>
+  </ul>
+  <h3>Learning rules</h3>
+  <ul>
+    <li>Implemented three-factor reward-modulated STDP and eligibility propagation (e-prop), rewriting the neuron and synapse equations in differentiable form with a surrogate gradient so that each rule runs as an online update at the robot's control rate.</li>
+    <li>Backpropagation through time served as a non-biological reference.</li>
+  </ul>
+</div>
+
+<figure class="fig-white narrow">
+  <div class="media"><img src="../assets/img/fig-overview.png" alt="Closed-loop control diagram and comparison of learning rules"></div>
+  <figcaption>Closed-loop architecture (top) and what each learning rule trains and how feedback reaches it (bottom).</figcaption>
+</figure>
+
+<div class="prose">
+  <h2>Results</h2>
+</div>
+<ul class="results">
+  <li><strong>100%</strong><span>survival in simulation with e-prop</span></li>
+  <li><strong>22%</strong><span>plateau with a single global, dopamine-like reward signal</span></li>
+  <li><strong>Real robot</strong><span>first steps on the physical H1-2, driven directly by the network</span></li>
+</ul>
+<div class="prose">
+  <p>A globally broadcast, dopamine-like neuromodulator signal could not assign credit to individual neurons, while e-prop, with per-neuron signals, matched exact gradients. A fixed reservoir with a trained linear readout did not reach walking.</p>
+</div>
+<div class="figrow">
+  <figure class="fig-white">
+  <div class="media"><img src="../assets/img/fig-learning.png" alt="Survival rate per DAgger round for BPTT, e-prop and three-factor STDP"></div>
+  <figcaption>Survival over DAgger rounds: e-prop tracks BPTT to 100%, three-factor STDP stays low.</figcaption>
+</figure>
+  <figure class="fig-white">
+  <div class="media"><img src="../assets/img/fig-reconstruction.png" alt="Expert and network joint commands over three seconds"></div>
+  <figcaption>Joint commands of the expert policy and of the spiking network over 3 s.</figcaption>
+</figure>
+</div>
+
+<div class="prose">
+  <h2>Paper</h2>
+  <p><em>Controlling the Humanoid Robot H1-2 With a Simulated Biologically Plausible Network</em>. F. Atwi, C. Roux, C. Bergaud, O. Stasse. IEEE-RAS International Conference on Humanoid Robots (Humanoids), 2026. The project page has more simulation and hardware videos.</p>
+</div>
+<div class="actions">
+  <a class="btn btn-primary" data-link="project" data-link-item href="#">Project page</a>
+  <a class="btn btn-secondary" data-link="hal" data-link-item href="#">Paper on HAL</a>
+</div>
+<nav class="next" aria-label="More projects"><a href="../projects.html">All projects</a><a href="../projects/r1-mpc-imitation.html">Next: MPC and imitation learning for the Unitree R1</a></nav>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>&copy; <span id="year">2026</span> Fatima Atwi</span>
+    <nav aria-label="Contact">
+      <a data-link="email" data-link-item href="#"></a>
+      <a data-link="github" data-link-item href="#">GitHub</a>
+      <a data-link="linkedin" data-link-item href="#">LinkedIn</a>
+      <a href="../assets/cv/Fatima_Atwi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </nav>
+  </div>
+</footer>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

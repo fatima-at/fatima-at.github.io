@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects | Fatima Atwi</title>
+<meta name="description" content="Projects by Fatima Atwi: spiking-network control of a humanoid, model-predictive control and RL, navigation, and competition robotics.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects | Fatima Atwi">
+<meta property="og:description" content="Projects by Fatima Atwi: spiking-network control of a humanoid, model-predictive control and RL, navigation, and competition robotics.">
+<meta property="og:url" content="https://fatima-at.github.io/projects.html">
+<meta property="og:image" content="https://fatima-at.github.io/assets/img/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">Fatima Atwi</a>
+    <nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a><a href="experience.html">Experience</a><a href="publications.html">Publications</a><a href="education.html">Education</a></nav>
+    <a class="btn btn-primary btn-small" href="assets/cv/Fatima_Atwi_CV.pdf" target="_blank" rel="noopener">CV</a>
+  </div>
+</header>
+<main class="wrap">
+
+<section class="page-head">
+  <h1>Projects</h1>
+  <p>Research on biologically plausible learning and control for humanoids, ongoing work on language-guided (VLA) navigation for mobile robots, and earlier projects in robotics, embedded systems and machine learning.</p>
+</section>
+
+<section class="block">
+  <h2>Research</h2>
+  <article class="proj-row">
+    <figure>
+  <div class="media"><video autoplay muted loop playsinline poster="assets/img/h1-2-sim-poster.jpg"><source src="assets/media/h1-2-sim.mp4" type="video/mp4"></video></div>
+  <figcaption>The trained spiking network walking the H1-2 in MuJoCo.</figcaption>
+</figure>
+    <div>
+      <p class="where">LAAS-CNRS, Gepetto and MEMS teams, May – Jul 2026</p>
+      <h3><a href="projects/snn-humanoid-control.html">Spiking neural network control of the Unitree H1-2</a></h3>
+      <p>A simulator of a 3D cortical culture grown on microelectrode arrays, trained with biologically plausible learning rules as a closed-loop controller. 100% survival in simulation, then first steps on the physical robot driven directly by the network. First-author paper at IEEE-RAS Humanoids 2026.</p>
+      <ul class="tags"><li>Brian2</li><li>PyTorch</li><li>e-prop</li><li>R-STDP</li><li>MuJoCo</li><li>Unitree H1-2</li></ul>
+      <a class="btn btn-secondary btn-small" href="projects/snn-humanoid-control.html">Read the project</a>
+    </div>
+  </article>
+  <article class="proj-row">
+    <figure class="">
+  <div class="media"><img src="assets/img/r1-gait-grid.png" alt="Gait keyframes of the Unitree R1"></div>
+  <figcaption>Gait keyframes of the Unitree R1 in MuJoCo, side view.</figcaption>
+</figure>
+    <div>
+      <p class="where">LAAS-CNRS, Gepetto team, Jul – Aug 2026</p>
+      <h3><a href="projects/r1-mpc-imitation.html">Model-predictive control and imitation learning for the Unitree R1</a></h3>
+      <p>A sampling-based cross-entropy MPC in MuJoCo MJX, eight quantitative gait metrics, and a DeepMimic-style PPO policy tracking commanded velocities up to 0.63 m/s.</p>
+      <ul class="tags"><li>MuJoCo MJX</li><li>JAX</li><li>CEM-MPC</li><li>PPO</li><li>Imitation learning</li></ul>
+      <a class="btn btn-secondary btn-small" href="projects/r1-mpc-imitation.html">Read the project</a>
+    </div>
+  </article>
+</section>
+
+<section class="block" id="ongoing">
+  <h2>Ongoing work</h2>
+  <ul class="others">
+    <li>
+      <span class="year">Since Sep 2026</span>
+      <div>
+        <h3>Localization, mapping and language-guided navigation</h3>
+        <p class="where" style="margin-bottom:6px">LS2N and École Centrale de Nantes, supervised by Andrea Cherubini</p>
+        <p>Building a simultaneous localization, mapping and navigation (SLAN) pipeline for a LiDAR-equipped TurtleBot in ROS 2 and Gazebo, and leading a research axis on language-guided navigation. First-author paper in preparation for IEEE/RSJ IROS 2027. Details will follow after submission.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<section class="block">
+  <h2>Other projects</h2>
+  <h3 class="group">Robotics and embedded systems</h3>
+  <ul class="others">
+    <li>
+      <span class="year">2025</span>
+      <div>
+        <h3>ROS autonomous navigation</h3>
+        <p>Simulated a mobile robot in ROS and Gazebo with LiDAR, RGB-D camera and IMU. Implemented sensor fusion, A* path planning, and PID and pure-pursuit control for obstacle avoidance.</p>
+      </div>
+    </li>
+    <li>
+      <span class="year">2025</span>
+      <div>
+        <h3>Weather monitoring station</h3>
+        <p>Built an all-in-one weather station with Modbus data acquisition, real-time sensor integration, a live dashboard and automated anomaly detection.</p>
+      </div>
+    </li>
+    <li>
+      <span class="year">2024</span>
+      <div>
+        <h3>Novel Nebula, smart library</h3>
+        <p class="award">1st prize out of 82 projects</p>
+        <p>Co-built a smart library with a small assistant robot and adaptive lighting, using IoT sensors and Arduino control.</p>
+      </div>
+    </li>
+    <li>
+      <span class="year">2019–2024</span>
+      <div>
+        <h3>Competition robotics</h3>
+        <p class="award">World Robot Olympiad 2019: 1st in Lebanon, 14th at the world finals</p>
+        <p>Led the team that designed and programmed a delivery and sorting robot system (Raspberry Pi, LEGO Mindstorms) for WRO. Later led the teams that built a PID-controlled line follower with 3D-printed parts and optimized motors (2024) and a torque-optimized sumo robot with sensor fusion (2023), both reaching top ranks in their competitions.</p>
+      </div>
+    </li>
+  </ul>
+  <h3 class="group">Machine learning and AI</h3>
+  <ul class="others">
+    <li>
+      <span class="year">2025</span>
+      <div>
+        <h3>LunaQuake, lunar seismic event detection</h3>
+        <p class="award">About 95% accuracy</p>
+        <p>Designed a system that detects the onset of moonquakes in seismic recordings, using short-time Fourier transform features and a bidirectional LSTM.</p>
+      </div>
+    </li>
+    <li>
+      <span class="year">2025</span>
+      <div>
+        <h3>ClimateGuard, weather forecasting and anomaly detection</h3>
+        <p class="award">Ranked 1st, graded 100/100; about 86% forecast accuracy</p>
+        <p>Developed a web platform (React, Vite, Python) for weather prediction and anomaly detection, combining Isolation Forest and Random Forest models.</p>
+      </div>
+    </li>
+    <li>
+      <span class="year">2025</span>
+      <div>
+        <h3>FilterFlare, image filter benchmark</h3>
+        <p class="award">About 26% SSIM improvement</p>
+        <p>Built a tool that benchmarks classical and CNN-based image filters on image quality.</p>
+      </div>
+    </li>
+    <li>
+      <span class="year">2025</span>
+      <div>
+        <h3>PowerPals, AI support app for child therapy</h3>
+        <p>Co-developed an app combining speech recognition (Whisper), text understanding (BERT) and CNN-based emotion detection from children's drawings and text.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <span>&copy; <span id="year">2026</span> Fatima Atwi</span>
+    <nav aria-label="Contact">
+      <a data-link="email" data-link-item href="#"></a>
+      <a data-link="github" data-link-item href="#">GitHub</a>
+      <a data-link="linkedin" data-link-item href="#">LinkedIn</a>
+      <a href="assets/cv/Fatima_Atwi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </nav>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
